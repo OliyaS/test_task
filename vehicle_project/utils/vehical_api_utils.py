@@ -1,12 +1,11 @@
 import requests
-
 from vehicle_project.resources.config_data import ConfigData
 
 GET_ONE_PIN = "/api/pins/{pin_id}"
 GET_ALL_PINS = "/api/pins"
 POST_ONE_PIN = "/api/pins/{pin_id}/update_pin"
 POST_ALL_PINS = "/api/pins/update_pins"
-GET_ONE_SIGNAL = "/api/signals/{sig_id} "
+GET_ONE_SIGNAL = "/api/signals/{sig_id}"
 GET_ALL_SIGNALS = "/api/signals"
 
 

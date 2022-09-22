@@ -1,6 +1,8 @@
 from vehicle_project.resources.pins_id import PinsId
+from vehicle_project.resources.signals_id import SignalsId
 from vehicle_project.utils.data_converter_utils import get_voltage_dict
-from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_get_for_one_pin
+from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_get_for_one_pin, \
+    execute_get_for_one_signal
 
 
 class Battery:
@@ -8,7 +10,7 @@ class Battery:
     Class Battery with states and methods
     """
     READY = "Ready"
-    NOT_READY = "Not Ready"
+    NOT_READY = "NotReady"
     ERROR = "Error"
 
     STATES = {READY: 600, NOT_READY: 200, ERROR: 0}
@@ -45,3 +47,10 @@ class Battery:
         Returns current Battery information
         """
         return execute_get_for_one_pin(PinsId.BATTERY).json()
+
+    @staticmethod
+    def get_current_battery_signal() -> str:
+        """
+        Returns current Battery signal information
+        """
+        return execute_get_for_one_signal(SignalsId.BATTERY).json()

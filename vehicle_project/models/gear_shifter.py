@@ -1,7 +1,8 @@
 from vehicle_project.resources.pins_id import PinsId
+from vehicle_project.resources.signals_id import SignalsId
 from vehicle_project.utils.data_converter_utils import get_voltage_dict, get_dict_for_set_gear_pos
 from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_post_for_all_pins, \
-    execute_get_for_all_pins
+    execute_get_for_all_pins, execute_get_for_one_signal
 
 
 class GearShifter:
@@ -39,3 +40,10 @@ class GearShifter:
         """
         response = execute_get_for_all_pins()
         return response.json()[PinsId.GEAR_1 - 1], response.json()[PinsId.GEAR_2 - 1]
+
+    @staticmethod
+    def get_current_gear_pos_signal() -> str:
+        """
+        Returns current Gear Position signal information
+        """
+        return execute_get_for_one_signal(SignalsId.GEAR_POSITION).json()
