@@ -4,6 +4,7 @@ from vehicle_project.utils.data_converter_utils import get_voltage_dict
 from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_get_for_one_signal
 
 
+
 class AccelerationPedal:
     """
     Class Acceleration Pedal with positions and methods
