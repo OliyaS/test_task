@@ -24,7 +24,6 @@ class TestAccPedal:
 
     @pytest.mark.parametrize("gear_pos", [GearShifter.DRIVE, GearShifter.REVERSE])
     @pytest.mark.parametrize("acc_pedal_pos", AccelerationPedal.POSITIONS)
-    @pytest.mark.skip
     def test_req_torque_by_acc_pedal_pos(self, gear_pos, acc_pedal_pos):
         BrakePedal.set_brake_pedal_state(BrakePedal.PRESSED)
         GearShifter.set_gear_shifter_by_pos(gear_pos)
