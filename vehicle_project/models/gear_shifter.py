@@ -1,7 +1,7 @@
 from vehicle_project.resources.pins_id import PinsId
 from vehicle_project.resources.signals_id import SignalsId
-from vehicle_project.utils.data_converter_utils import get_voltage_dict, get_dict_for_set_gear_pos
-from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_post_for_all_pins, \
+from vehicle_project.utils.data_converter_utils import get_dict_for_set_gear_pos
+from vehicle_project.utils.vehical_api_utils import execute_post_for_all_pins, \
     execute_get_for_all_pins, execute_get_for_one_signal
 
 
@@ -25,11 +25,11 @@ class GearShifter:
         if position == GearShifter.PARK:
             execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.PARK]))
         elif position == GearShifter.NEUTRAL:
-            execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.PARK]))
+            execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.NEUTRAL]))
         elif position == GearShifter.REVERSE:
-            execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.PARK]))
+            execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.REVERSE]))
         elif position == GearShifter.DRIVE:
-            execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.PARK]))
+            execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.DRIVE]))
         else:
             raise ValueError("This state is absent")
 

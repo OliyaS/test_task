@@ -3,11 +3,11 @@ def soft_assert_for_lists(expected_list, actual_list):
     if len(expected_list) == len(actual_list):
         for index in range(0, len(expected_list)):
             if expected_list[index] != actual_list[index]:
-                messages.append(f"Different values. Expected: {expected_list[index]}, actual: {actual_list[index]}")
+                messages.append(f"\nDifferent values. Expected: {expected_list[index]}. Actual: {actual_list[index]}")
     else:
-        messages.append("Different length of lists ")
+        messages.append("\nDifferent length of lists ")
 
     if messages:
-        raise AssertionError("\n".join(messages))
+        raise AssertionError(''.join(messages))
     else:
         return True

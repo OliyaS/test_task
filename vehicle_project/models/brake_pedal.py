@@ -1,6 +1,8 @@
 from vehicle_project.resources.pins_id import PinsId
+from vehicle_project.resources.signals_id import SignalsId
 from vehicle_project.utils.data_converter_utils import get_voltage_dict
-from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_get_for_one_pin
+from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_get_for_one_pin, \
+    execute_get_for_one_signal
 
 
 class BrakePedal:
@@ -45,3 +47,10 @@ class BrakePedal:
         Returns current Brake Pedal information
         """
         return execute_get_for_one_pin(PinsId.BRAKE_PEDAL).json()
+
+    @staticmethod
+    def get_current_brake_pedal_signal() -> str:
+        """
+        Returns current Brake Pedal signal information
+        """
+        return execute_get_for_one_signal(SignalsId.BRAKE_PEDAL).json()

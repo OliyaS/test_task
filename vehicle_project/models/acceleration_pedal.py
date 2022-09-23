@@ -1,6 +1,7 @@
 from vehicle_project.resources.pins_id import PinsId
+from vehicle_project.resources.signals_id import SignalsId
 from vehicle_project.utils.data_converter_utils import get_voltage_dict
-from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin
+from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, execute_get_for_one_signal
 
 
 class AccelerationPedal:
@@ -12,11 +13,6 @@ class AccelerationPedal:
     PERCENT_30 = "30 %"
     PERCENT_50 = "50 %"
     PERCENT_100 = "100 %"
-
-    NM_0 = "0 Nm"
-    NM_3000 = "3000 Nm"
-    NM_5000 = "5000 Nm"
-    NM_10000 = "10000 Nm"
 
     POSITIONS = {ERROR: 0, PERCENT_0: 1.5, PERCENT_30: 2.25, PERCENT_50: 2.75, PERCENT_100: 3.25}
 
@@ -35,22 +31,6 @@ class AccelerationPedal:
             return AccelerationPedal.PERCENT_100
         else:
             return AccelerationPedal.ERROR
-
-    @staticmethod
-    def get_req_torque_by_acc_pedal_pos(acc_pedal_pos: str) -> str:
-        """
-        Returns Requested Torque value by percent
-        """
-        if acc_pedal_pos == AccelerationPedal.ERROR:
-            return AccelerationPedal.NM_0
-        elif acc_pedal_pos == AccelerationPedal.PERCENT_0:
-            return AccelerationPedal.NM_0
-        elif acc_pedal_pos == AccelerationPedal.PERCENT_30:
-            return AccelerationPedal.NM_3000
-        elif acc_pedal_pos == AccelerationPedal.PERCENT_50:
-            return AccelerationPedal.NM_5000
-        elif acc_pedal_pos == AccelerationPedal.PERCENT_100:
-            return AccelerationPedal.NM_10000
 
     @staticmethod
     def set_acc_pedal_pos(position: str):
@@ -74,3 +54,10 @@ class AccelerationPedal:
                                      get_voltage_dict(AccelerationPedal.POSITIONS[AccelerationPedal.PERCENT_100]))
         else:
             raise ValueError("This position is absent")
+
+    @staticmethod
+    def get_current_acc_pedal_signal() -> str:
+        """
+        Returns current AccelerationPedal signal information
+        """
+        return execute_get_for_one_signal(SignalsId.ACC_PEDAL).json()

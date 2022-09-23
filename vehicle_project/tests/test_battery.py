@@ -6,10 +6,10 @@ from vehicle_project.models.gear_shifter import GearShifter
 from vehicle_project.models.pin import Pin
 from vehicle_project.models.signal import Signal
 
-VOLTAGE_VALUES = [800, 799.99, 800.01, 400, 399.99, 400.01, 0, 0.01]
-
 
 class TestBattery:
+    VOLTAGE_BATTERY_VALUES = [800, 799.99, 800.01, 400, 399.99, 400.01, 0, 0.01]
+
     def test_not_ready_state(self):
         Battery.set_battery_state(Battery.NOT_READY)
         battery_state_signal = Signal.get_obj_from_json(Battery.get_current_battery_signal())
@@ -24,7 +24,7 @@ class TestBattery:
         actual_voltage_values_list = [round(pin_object.Voltage) for pin_object in pin_objects_list]
         assert soft_assert_for_lists(expected_values_list, actual_voltage_values_list)
 
-    @pytest.mark.parametrize("voltage", VOLTAGE_VALUES)
+    @pytest.mark.parametrize("voltage", VOLTAGE_BATTERY_VALUES)
     def test_voltage_values(self, voltage):
         battery_state_by_voltage = Battery.get_battery_state_by_voltage(voltage)
         Battery.set_battery_state(battery_state_by_voltage)
