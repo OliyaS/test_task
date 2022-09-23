@@ -6,7 +6,7 @@ from vehicle_project.utils.vehical_api_utils import execute_post_for_one_pin, ex
 
 class AccelerationPedal:
     """
-    Class Acceleration Pedal with states and methods
+    Class Acceleration Pedal with positions and methods
     """
     ERROR = "Error"
     PERCENT_0 = "0 %"
@@ -17,9 +17,10 @@ class AccelerationPedal:
     POSITIONS = {ERROR: 0, PERCENT_0: 1.5, PERCENT_30: 2.25, PERCENT_50: 2.75, PERCENT_100: 3.25}
 
     @staticmethod
-    def get_acc_pedal_pos_by_voltage(voltage) -> str:
+    def get_acc_pedal_pos_by_voltage(voltage: int) -> str:
         """
-        Returns Acceleration Pedal state by voltage
+        :param voltage: acceleration pedal voltage value
+        :return: acceleration pedal state by voltage
         """
         if 1 <= voltage < 2:
             return AccelerationPedal.PERCENT_0
@@ -36,6 +37,7 @@ class AccelerationPedal:
     def set_acc_pedal_pos(position: str):
         """
         Sets Acceleration Pedal position
+        :param position: acceleration pedal position value
         """
         if position == AccelerationPedal.ERROR:
             execute_post_for_one_pin(PinsId.ACC_PEDAL,
@@ -58,6 +60,6 @@ class AccelerationPedal:
     @staticmethod
     def get_current_acc_pedal_signal() -> str:
         """
-        Returns current AccelerationPedal signal information
+        :return: current acceleration pedal signal information
         """
         return execute_get_for_one_signal(SignalsId.ACC_PEDAL).json()

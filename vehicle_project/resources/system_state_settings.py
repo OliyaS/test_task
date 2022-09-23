@@ -1,4 +1,7 @@
 class SystemState:
+    """
+    Class contains default system settings
+    """
     DEFAULT = {
         "Pins": [
             {

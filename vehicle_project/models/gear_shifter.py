@@ -7,7 +7,7 @@ from vehicle_project.utils.vehical_api_utils import execute_post_for_all_pins, \
 
 class GearShifter:
     """
-    Class Gear Shifter with gear positions
+    Class Gear Shifter with gear positions and methods
     """
 
     PARK = "Park"
@@ -20,7 +20,8 @@ class GearShifter:
     @staticmethod
     def set_gear_shifter_by_pos(position: str):
         """
-        Sets Gear position
+        Sets gear position
+        :param position: gear position value
         """
         if position == GearShifter.PARK:
             execute_post_for_all_pins(get_dict_for_set_gear_pos(*GearShifter.POSITIONS[GearShifter.PARK]))
@@ -36,7 +37,7 @@ class GearShifter:
     @staticmethod
     def get_current_gear_pos() -> tuple:
         """
-        Returns current Gear information
+        :return: current gear information
         """
         response = execute_get_for_all_pins()
         return response.json()[PinsId.GEAR_1 - 1], response.json()[PinsId.GEAR_2 - 1]
@@ -44,6 +45,6 @@ class GearShifter:
     @staticmethod
     def get_current_gear_pos_signal() -> str:
         """
-        Returns current Gear Position signal information
+        :return: current gear position signal information
         """
         return execute_get_for_one_signal(SignalsId.GEAR_POSITION).json()

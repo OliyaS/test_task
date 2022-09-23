@@ -16,9 +16,10 @@ class BrakePedal:
     STATES = {ERROR: 0, PRESSED: 1.5, RELEASED: 2.5}
 
     @staticmethod
-    def get_brake_pedal_state_by_voltage(voltage) -> str:
+    def get_brake_pedal_state_by_voltage(voltage: int) -> str:
         """
-        Returns Brake Pedal state by voltage
+        :param voltage: brake pedal voltage value
+        :return: brake pedal state by voltage
         """
         if 1 <= voltage < 2:
             return BrakePedal.PRESSED
@@ -30,7 +31,8 @@ class BrakePedal:
     @staticmethod
     def set_brake_pedal_state(state: str):
         """
-        Sets Brake Pedal state
+        Sets brake pedal state on the pin
+        :param state: brake pedal state value
         """
         if state == BrakePedal.ERROR:
             execute_post_for_one_pin(PinsId.BRAKE_PEDAL, get_voltage_dict(BrakePedal.STATES[BrakePedal.ERROR]))
@@ -44,13 +46,13 @@ class BrakePedal:
     @staticmethod
     def get_current_brake_pedal_state() -> str:
         """
-        Returns current Brake Pedal information
+        :return: current brake pedal information
         """
         return execute_get_for_one_pin(PinsId.BRAKE_PEDAL).json()
 
     @staticmethod
     def get_current_brake_pedal_signal() -> str:
         """
-        Returns current Brake Pedal signal information
+        :return: current brake pedal signal information
         """
         return execute_get_for_one_signal(SignalsId.BRAKE_PEDAL).json()

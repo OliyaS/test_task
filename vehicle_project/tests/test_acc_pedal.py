@@ -9,6 +9,9 @@ from vehicle_project.resources.signals_id import SignalsId
 
 
 class TestAccPedal:
+    """
+    Class contains tests for AccPedal and ReqTorque
+    """
     VOLTAGE_ACC_PEDAL_VALUES = [3.5, 3.49, 3.51, 3, 2.99, 3.01, 2.5, 2.49, 2.51, 2, 1.99, 2.01, 1, 0.99, 0]
 
     @pytest.mark.parametrize("voltage", VOLTAGE_ACC_PEDAL_VALUES)

@@ -8,6 +8,9 @@ from vehicle_project.models.signal import Signal
 
 
 class TestBattery:
+    """
+    Class contains tests for battery
+    """
     VOLTAGE_BATTERY_VALUES = [800, 799.99, 800.01, 400, 399.99, 400.01, 0, 0.01]
 
     def test_not_ready_state(self):

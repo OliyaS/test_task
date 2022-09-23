@@ -10,6 +10,9 @@ from vehicle_project.models.signal import Signal
 
 
 class TestBrakePedal:
+    """
+    Class contains tests for Brake Pedal
+    """
     VOLTAGE_BRAKE_PEDAL_VALUES = [3, 2.99, 3.01, 2, 1.99, 2.01, 1, 0.99, 1.01, 0]
 
     @pytest.mark.parametrize("gear_pos", GearShifter.POSITIONS.keys())

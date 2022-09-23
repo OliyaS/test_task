@@ -6,6 +6,9 @@ from vehicle_project.models.signal import Signal
 
 
 class TestGearShifter:
+    """
+    Class contains tests for Gear Shifter
+    """
     @pytest.mark.parametrize("battery_state", [Battery.ERROR, Battery.NOT_READY])
     @pytest.mark.parametrize("gear_pos", [GearShifter.PARK, GearShifter.REVERSE, GearShifter.DRIVE])
     def test_with_battery_error_and_not_ready(self, battery_state, gear_pos):

@@ -16,9 +16,10 @@ class Battery:
     STATES = {READY: 600, NOT_READY: 200, ERROR: 0}
 
     @staticmethod
-    def get_battery_state_by_voltage(voltage) -> str:
+    def get_battery_state_by_voltage(voltage: int) -> str:
         """
-        Returns Battery state by voltage
+        :param voltage: battery voltage value
+        :return: battery state by voltage
         """
         if 800 >= voltage > 400:
             return Battery.READY
@@ -30,7 +31,8 @@ class Battery:
     @staticmethod
     def set_battery_state(state: str):
         """
-        Sets Battery state
+        Sets battery state on the pin
+        :param state: battery state value
         """
         if state == Battery.READY:
             execute_post_for_one_pin(PinsId.BATTERY, get_voltage_dict(Battery.STATES[Battery.READY]))
@@ -44,13 +46,13 @@ class Battery:
     @staticmethod
     def get_current_battery_state() -> str:
         """
-        Returns current Battery information
+        :return: current battery information
         """
         return execute_get_for_one_pin(PinsId.BATTERY).json()
 
     @staticmethod
     def get_current_battery_signal() -> str:
         """
-        Returns current Battery signal information
+        :return: current battery signal information
         """
         return execute_get_for_one_signal(SignalsId.BATTERY).json()

@@ -1,4 +1,10 @@
 def soft_assert_for_lists(expected_list, actual_list):
+    """
+    Utility for comparing all values from lists
+    :param expected_list: expected list
+    :param actual_list: actual list
+    :return: True if not errors
+    """
     messages = []
     if len(expected_list) == len(actual_list):
         for index in range(0, len(expected_list)):

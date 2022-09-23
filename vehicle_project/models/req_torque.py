@@ -15,7 +15,8 @@ class ReqTorque:
     @staticmethod
     def get_req_torque_by_acc_pedal_pos(acc_pedal_pos: str) -> str:
         """
-        Returns Requested Torque value by percent
+        :param acc_pedal_pos: acceleration pedal position value
+        :return: requested torque value by percent
         """
         if acc_pedal_pos == AccelerationPedal.ERROR:
             return ReqTorque.NM_0
@@ -31,6 +32,6 @@ class ReqTorque:
     @staticmethod
     def get_current_req_torque_signal() -> str:
         """
-        Returns current ReqTorque signal information
+        :return: current ReqTorque signal information
         """
         return execute_get_for_one_signal(SignalsId.REQ_TORQUE).json()
